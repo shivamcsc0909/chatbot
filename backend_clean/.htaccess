@@ -1,0 +1,19 @@
+# Apache configuration for Hostinger Shared Hosting
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# Protect SQLite database and config files from direct download
+<FilesMatch "\.(sqlite|sqlite3|db|env|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Enable CORS Headers
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, X-Visitor-Id, X-Admin-Token"
+</IfModule>
